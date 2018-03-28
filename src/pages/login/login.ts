@@ -23,17 +23,19 @@ export class LoginPage {
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController,
-    public translateService: TranslateService) {
-
-    this.translateService.get('LOGIN_ERROR').subscribe((value) => {
+              public user: User,
+              public toastCtrl: ToastController,
+              public translateService: TranslateService) 
+    {
+      this.translateService.get('LOGIN_ERROR').subscribe((value) => 
+      {
       this.loginErrorString = value;
-    })
-  }
+      })
+    }
 
   // Attempt to login in through our User service
-  doLogin() {
+  doLogin() 
+  {
     this.user.login(this.account).subscribe((resp) => {
       this.navCtrl.push(MainPage);
     }, (err) => {
