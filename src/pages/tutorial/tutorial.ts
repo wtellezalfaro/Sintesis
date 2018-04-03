@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 export interface Slide {
   title: string;
@@ -18,8 +20,9 @@ export class TutorialPage {
   slides: Slide[];
   showSkip = true;
   dir: string = 'ltr';
+  sols:any[]=[];
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform, public http:Http) {
     this.dir = platform.dir();
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
@@ -48,6 +51,13 @@ export class TutorialPage {
           }
         ];
       });
+      
+      this.http.get('http://localhost:55827/api/SolicitudVacacion?personalId=000511').map( resp=>resp.json())
+                      .subscribe(data=>{console.log(data);
+                                        this.sols.push(...data.solicitudes);
+                                        })
+
+      console.log(this.sols);
   }
 
   startApp() {
