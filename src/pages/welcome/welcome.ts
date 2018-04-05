@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import { Http } from '@angular/http';
+
+import { HttpClient } from '@angular/common/http';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -17,23 +16,14 @@ import { Http } from '@angular/http';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
-  sols:any[]=[];
+  sols : any[] = [];
   
-  constructor(public navCtrl: NavController, public http:Http) { 
-    console.log('hola');
-    //http.get('http://localhost:55827/api/SolicitudVacacion?personalId=000511').subscribe( (data) => {console.log(data); this.sols.push(...data.solicitudes)},(error) => {console.error(error)} )
-    this.http.get('http://localhost:55827/api/SolicitudVacacion?personalId=000511').map( resp=>resp.json())
-                      .subscribe(data=>{console.log(data);
-                                        this.sols.push(...data.solicitudes);
-                                        })
-
-
-    console.log('hola2');
-    //console.log(this.sols);
+  constructor(public navCtrl: NavController) { 
+    
   }
 
   login() {
-    //this.navCtrl.push('LoginPage');
+    this.navCtrl.push('LoginPage');
   }
 
   signup() {

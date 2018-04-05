@@ -52,12 +52,7 @@ export class TutorialPage {
         ];
       });
       
-      this.http.get('http://localhost:55827/api/SolicitudVacacion?personalId=000511').map( resp=>resp.json())
-                      .subscribe(data=>{console.log(data);
-                                        this.sols.push(...data.solicitudes);
-                                        })
-
-      console.log(this.sols);
+      
   }
 
   startApp() {

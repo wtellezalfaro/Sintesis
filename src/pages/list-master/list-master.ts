@@ -4,7 +4,7 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
-import { HttpBackend } from '@angular/common/http/src/backend';
+import { HttpClient } from '@angular/common/http';
 
 
 @IonicPage()
@@ -17,13 +17,18 @@ export class ListMasterPage
   currentItems: Item[];
   sols:any[]=[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) 
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient) 
   {
-    /*this.http.get('http://localhost:55827/api/SolicitudVacacion?personalId=000511').map( resp=>resp.json())
-                      .subscribe(data=>{console.log(data);
-                                        this.sols.push(...data.solicitudes);
-                                        })
-                                        console.log(this.sols);*/
+    http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion?personalid=000066').subscribe(
+      (data) => { // Success
+        this.sols = data['solicitudes'];
+        console.log(data['solicitudes']);
+        /*this.sols.push(...data['solicitudes']);*/
+      },
+      (error) =>{
+        console.error(error);
+      }
+    );
   }
 
   /**
