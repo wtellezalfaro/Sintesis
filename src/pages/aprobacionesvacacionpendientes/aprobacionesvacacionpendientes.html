@@ -1,0 +1,19 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title class="primary">Aprobaciones Pendientes</ion-title>
+  
+  
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content>
+      <ion-list>
+      <button ion-item *ngFor="let item of sols" (click)="itemSelected(1)">
+        {{Nombre}}-{{SolicitudFecha}}
+      </button>  
+      
+    </ion-list>
+    
+  </ion-content>

@@ -6,12 +6,13 @@ import { Config, Nav, Platform } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
+import { AprobacionesvacacionpendientesPage } from '../pages/aprobacionesvacacionpendientes/aprobacionesvacacionpendientes';
 
 @Component({
   template: `<ion-menu [content]="content">
-    <ion-header>
+    <ion-header color="primary">
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -32,18 +33,21 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
+    { title: 'Historial Vacaciones', component: 'AprobacionesvacacionpendientesPage' },
+    { title: 'Solicitudes Vacación', component: 'SolicitudvacacionesPage' },
+    { title: 'Aprobaciones Pendientes', component: 'AprobacionesvacacionpendientesPage' },    
+    { title: 'Saldo Dependientes', component: 'CardsPage' },
+    { title: 'Asistencia', component: 'SearchPage' }/*,
     { title: 'Content', component: 'ContentPage' },
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    { title: 'Search', component: 'SearchPage' }*/
   ]
+
+  //rootPage:any=
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {

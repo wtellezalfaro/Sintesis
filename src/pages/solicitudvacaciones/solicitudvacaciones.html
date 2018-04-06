@@ -1,18 +1,48 @@
-<!--
-  Generated template for the SolicitudvacacionesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>solicitudvacaciones</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar>
+      <ion-title>Solicitudes de Vacación</ion-title>
+  
+      <ion-buttons end>
+        <button ion-button icon-only (click)="addItem()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+        <ion-row >
+            <ion-col >
+              Id
+            </ion-col>     
+            <ion-col>
+              Inicio Solicitada
+            </ion-col>   
+            <ion-col>
+              Fin Solicitada
+            </ion-col>   
+            <ion-col>
+              Dias
+            </ion-col>   
+          </ion-row>
+      <ion-row *ngFor="let item of sols">
+        <ion-col>
+          {{item.SolicitudId}}
+        </ion-col>     
+        <ion-col>
+          {{item.SolicitudFechaInicio|date:'dd/MM/yyyy'}}
+        </ion-col>      
+        <ion-col>
+            {{item.SolicitudFechaInicio|date:'dd/MM/yyyy'}}
+        </ion-col> 
+        <ion-col>
+            {{item.dias}}
+        </ion-col>   
+      </ion-row>
+    </ion-grid>
+  
+    
+  </ion-content>

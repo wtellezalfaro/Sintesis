@@ -19,16 +19,16 @@ export class ListMasterPage
 
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient) 
   {
-    http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion?personalid=000066').subscribe(
+    /*http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion?personalid=000066').subscribe(
       (data) => { // Success
         this.sols = data['solicitudes'];
         console.log(data['solicitudes']);
-        /*this.sols.push(...data['solicitudes']);*/
+       
       },
       (error) =>{
         console.error(error);
       }
-    );
+    );*/
   }
 
   /**
@@ -54,7 +54,7 @@ export class ListMasterPage
   /**
    * Delete an item from the list of items.
    */
-  deleteItem() {
+  itemSelected(item) {
     
   }
 
