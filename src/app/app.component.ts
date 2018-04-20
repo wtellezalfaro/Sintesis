@@ -8,6 +8,7 @@ import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { AprobacionesvacacionpendientesPage } from '../pages/aprobacionesvacacionpendientes/aprobacionesvacacionpendientes';
 import { AsistenciadependientesPage } from '../pages/asistenciadependientes/asistenciadependientes';
+import { SaldovacaciondependientesPage } from '../pages/saldovacaciondependientes/saldovacaciondependientes';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -37,7 +38,7 @@ export class MyApp {
     { title: 'Historial Vacaciones', component: 'HistorialVacacionesPage' },
     { title: 'Solicitudes Vacación', component: 'SolicitudvacacionesPage' },
     { title: 'Aprobaciones Pendientes', component: 'AprobacionesvacacionpendientesPage' },    
-    { title: 'Saldo Dependientes', component: 'CardsPage' },
+    { title: 'Saldo Dependientes', component: 'SaldovacaciondependientesPage' },
     { title: 'Asistencia', component: 'SearchPage' },
     { title: 'Asistencia Dependientes', component: 'AsistenciadependientesPage' }/*,
     { title: 'Login', component: 'LoginPage' },
