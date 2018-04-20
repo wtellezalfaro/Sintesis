@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
+import { AprobacionesvacacionpendientesPage } from '../../pages/aprobacionesvacacionpendientes/aprobacionesvacacionpendientes';
+import { AsistenciadependientesPage } from '../../pages/asistenciadependientes/asistenciadependientes';
 
 interface PageItem {
   title: string

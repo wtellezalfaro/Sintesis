@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Solicitud de Vacación</ion-title>
+    <ion-title>Solicitudd de Vacación</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary" showWhen="ios">
@@ -24,7 +24,7 @@
 
 
 <ion-content>
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+  <!-- <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
@@ -42,6 +42,28 @@
       <ion-item>
         <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
       </ion-item>
+      
     </ion-list>
-  </form>
+  </form> -->
+  <form>
+  <ion-list>
+    <ion-item>
+      <ion-label>Desde</ion-label>
+      <ion-datetime ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hasta</ion-label>
+      <ion-datetime ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Observaciones</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dias</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <button ion-button block>Aceptar</button>
+  </ion-list>
+</form>
 </ion-content>

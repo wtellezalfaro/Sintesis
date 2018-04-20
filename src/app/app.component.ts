@@ -7,6 +7,7 @@ import { Config, Nav, Platform } from 'ionic-angular';
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { AprobacionesvacacionpendientesPage } from '../pages/aprobacionesvacacionpendientes/aprobacionesvacacionpendientes';
+import { AsistenciadependientesPage } from '../pages/asistenciadependientes/asistenciadependientes';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -33,12 +34,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Historial Vacaciones', component: 'AprobacionesvacacionpendientesPage' },
+    { title: 'Historial Vacaciones', component: 'HistorialVacacionesPage' },
     { title: 'Solicitudes Vacación', component: 'SolicitudvacacionesPage' },
     { title: 'Aprobaciones Pendientes', component: 'AprobacionesvacacionpendientesPage' },    
     { title: 'Saldo Dependientes', component: 'CardsPage' },
-    { title: 'Asistencia', component: 'SearchPage' }/*,
-    { title: 'Content', component: 'ContentPage' },
+    { title: 'Asistencia', component: 'SearchPage' },
+    { title: 'Asistencia Dependientes', component: 'AsistenciadependientesPage' }/*,
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },

@@ -1,18 +1,50 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>{{item}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+  <!--<div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
   </div>
 
   <div class="item-detail" padding>
     <h2>{{item.name}}</h2>
     <p>{{item.about}}</p>
-  </div>
+  </div> -->
+  
+
+  <ion-grid>
+    <ion-row >
+        <ion-col >
+          Fecha
+        </ion-col>     
+        <ion-col>
+          Turno
+        </ion-col>   
+        <ion-col>
+          Entrada
+        </ion-col>   
+        <ion-col>
+          Salida
+        </ion-col>   
+      </ion-row>
+  <ion-row *ngFor="let item of sols">
+    <ion-col>
+        {{item.Date|date:'dd/MM/yyyy'}}
+    </ion-col>     
+    <ion-col>
+        {{item.ScheduleMarkupName}}
+    </ion-col>      
+    <ion-col>
+        {{item.MarkupIn|date:'HH:mm:ss'}}
+    </ion-col> 
+    <ion-col>
+        {{item.MarkupOut|date:'HH:mm:ss'}}
+    </ion-col>   
+  </ion-row>
+</ion-grid>
 </ion-content>
