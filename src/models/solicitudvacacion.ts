@@ -4,9 +4,9 @@ export class SolicitudVacacion
     constructor(
         public Cod_personal: string,        
         public SolicitudId: number,        
-        public SolicitudFecha: string,  
-        public SolicitudFechaInicio: Date,
-        public SolicitudFechaFin: Date,    
+        public SolicitudFecha: string,   
+        public SolicitudFechaInicio: string,
+        public SolicitudFechaFin: string,    
         public SolicitudDias: number,     
         public SolicitudIsContinua: boolean,   
         public SolicitudAprobada: boolean,         
