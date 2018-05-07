@@ -24,27 +24,7 @@
 
 
 <ion-content>
-  <!-- <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
-      </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
-      </ion-item>
-      
-    </ion-list>
-  </form> -->
+ 
   <form>
   <ion-list>
     <ion-item>
@@ -57,13 +37,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Observaciones</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Dias</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" ></ion-input>
     </ion-item>
-    <button ion-button block>Aceptar</button>
+    <button ion-button  block (click)="done()" >Aceptar</button>
   </ion-list>
 </form>
 </ion-content>

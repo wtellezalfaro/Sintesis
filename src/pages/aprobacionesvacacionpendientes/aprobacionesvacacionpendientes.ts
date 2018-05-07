@@ -18,7 +18,7 @@ export class AprobacionesvacacionpendientesPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public http:HttpClient) 
   {
-    http.get('http://sintesismws.ttsoluciones.com/api/GetVacacionesPendientesAprobacion?personalid=000066').subscribe(
+    http.get('http://sintesismws.ttsoluciones.com/Employee/GetVacacionesPendientesAprobacion?personal=000066').subscribe(
       (data) => { // Success
         this.sols = data['vacacionespendientes'];
         console.log(data['vacacionespendientes']);
