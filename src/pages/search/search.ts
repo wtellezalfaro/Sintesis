@@ -15,13 +15,13 @@ import { HttpClient } from '@angular/common/http';
 export class SearchPage 
 {
   currentItems: Item[];
-  sols:any[]=[];
+  days:any[]=[];
 
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient) 
   {
     http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal=000066').subscribe(
       (data) => { // Success
-        this.sols = data['asistencia'];
+        this.days = data['asistencia'];
         console.log(data['asistencia']);
         /*this.sols.push(...data['solicitudes']);*/
       },

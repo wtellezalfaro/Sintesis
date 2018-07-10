@@ -1,7 +1,7 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>Asistencia</ion-title>
+      <ion-title style="background-color: linen">Asistencia</ion-title>
   
       <ion-buttons end>
         <button ion-button icon-only (click)="addItem()">
@@ -13,6 +13,10 @@
   </ion-header>
   
   <ion-content>
+
+
+     
+
     <ion-grid>
         <ion-row >
             <ion-col >
@@ -24,23 +28,26 @@
             <ion-col>
               Entrada
             </ion-col>   
-            <ion-col>
-              Salida
-            </ion-col>   
+            
           </ion-row>
-      <ion-row *ngFor="let item of sols">
-        <ion-col>
-            {{item.Date|date:'dd/MM/yyyy'}}
+      <ion-row *ngFor="let item of days">
+        <ion-col style="background:azure">          
+            {{item.CalendarDate|date:'dd/MM/yyyy'}}                     
+            {{item.CalendarDateDescription}}
         </ion-col>     
         <ion-col>
-            {{item.ScheduleMarkupName}}
+            <ion-item>
+                <ion-label>Mañana</ion-label>
+                <ion-checkbox  checked="false"></ion-checkbox>
+              </ion-item>
         </ion-col>      
         <ion-col>
-            {{item.MarkupIn|date:'HH:mm:ss'}}
+            <ion-item>
+                <ion-label>Tarde</ion-label>
+                <ion-checkbox  checked="false"></ion-checkbox>
+              </ion-item>
         </ion-col> 
-        <ion-col>
-            {{item.MarkupOut|date:'HH:mm:ss'}}
-        </ion-col>   
+        
       </ion-row>
     </ion-grid>
   
