@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 /**
  * Generated class for the SolicitudvacacionesPage page.
  *
@@ -15,12 +17,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SolicitudvacacionesPage {
 
-
+  public UserId: string;
   sols:any[]=[];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public http:HttpClient) 
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, 
+              public http:HttpClient,
+              public storage:Storage,
+              private platform:Platform   ) 
   {
-    http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion?personalid=000066').subscribe(
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='1';
+    }
+    
+    http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion/'+this.UserId).subscribe(
       (data) => { // Success
         this.sols = data['solicitudes'];
         console.log(data['solicitudes']);

@@ -27,6 +27,9 @@
             <ion-col>
               Dias
             </ion-col>   
+            <ion-col>
+              Aprobada
+            </ion-col>  
           </ion-row>
       <ion-row *ngFor="let item of sols">
         <ion-col>
@@ -39,8 +42,12 @@
             {{item.SolicitudFechaInicio|date:'dd/MM/yyyy'}}
         </ion-col> 
         <ion-col>
-            {{item.dias}}
+            {{item.SolicitudDias}}
         </ion-col>   
+        <ion-col>
+            <ion-checkbox [(ngModel)]="item.SolicitudAprobada" ></ion-checkbox>
+          
+        </ion-col>  
       </ion-row>
     </ion-grid>
   
