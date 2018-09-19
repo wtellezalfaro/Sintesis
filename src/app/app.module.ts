@@ -14,6 +14,7 @@ import { Settings } from '../providers/providers';
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
+import { MembershipProvider } from '../providers/membership/membership';
 
 
 //import { HttpModule } from '@angular/http/src/http_module';
@@ -71,6 +72,7 @@ export function provideSettings(storage: Storage) {
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MembershipProvider,
     
   ]
 })
