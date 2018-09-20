@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{item}}</ion-title>
+    <ion-title>{{itemNav}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,33 +18,35 @@
   
 
   <ion-grid>
-    <ion-row >
-        <ion-col >
-          Fecha
-        </ion-col>     
-        <ion-col>
-          Turno
-        </ion-col>   
-        <ion-col>
-          Entrada
-        </ion-col>   
-        <ion-col>
-          Salida
-        </ion-col>   
-      </ion-row>
-  <ion-row *ngFor="let item of sols">
-    <ion-col>
-        {{item.Date|date:'dd/MM/yyyy'}}
-    </ion-col>     
-    <ion-col>
-        {{item.ScheduleMarkupName}}
-    </ion-col>      
-    <ion-col>
-        {{item.MarkupIn|date:'HH:mm:ss'}}
-    </ion-col> 
-    <ion-col>
-        {{item.MarkupOut|date:'HH:mm:ss'}}
-    </ion-col>   
-  </ion-row>
-</ion-grid>
+      <ion-row >
+          <ion-col >
+            Fecha
+          </ion-col>     
+          <ion-col>
+            Horario
+          </ion-col>   
+          <ion-col>
+            Entrada
+          </ion-col>   
+          <ion-col>
+              Salida
+            </ion-col>   
+        </ion-row>
+    <ion-row *ngFor="let item of days" [ngStyle]="{background: getColor(item.EmployeeCalendarType)}">
+      <ion-col >          
+          {{item.CalendarDate|date:'dd/MM/yyyy'}}                     
+          {{item.EmployeeCalendarDescription}}
+      </ion-col>     
+      <ion-col>
+          {{item.ScheduleName}}-{{item.ScheduleMarkupName}}
+      </ion-col>      
+      <ion-col>
+          {{item.MarkupIn | date: 'HH:mm'}}
+      </ion-col> 
+      <ion-col>
+          {{item.MarkupOut | date: 'HH:mm'}}
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
 </ion-content>

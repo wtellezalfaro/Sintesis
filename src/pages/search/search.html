@@ -29,26 +29,19 @@
                 Salida
               </ion-col>   
           </ion-row>
-      <ion-row *ngFor="let item of days">
-        <ion-col style="background:azure">          
+      <ion-row *ngFor="let item of days" [ngStyle]="{background: getColor(item.EmployeeCalendarType)}">
+        <ion-col >          
             {{item.CalendarDate|date:'dd/MM/yyyy'}}                     
             {{item.EmployeeCalendarDescription}}
         </ion-col>     
         <ion-col>
-            <ion-item>
-                <ion-label>{{item.ScheduleName}}-{{item.ScheduleMarkupName}}</ion-label>
-               
-              </ion-item>
+            {{item.ScheduleName}}-{{item.ScheduleMarkupName}}
         </ion-col>      
         <ion-col>
-            <ion-item>
-                <ion-label>{{item.MarkupIn | date: 'HH:mm'}}</ion-label>                
-              </ion-item>
+            {{item.MarkupIn | date: 'HH:mm'}}
         </ion-col> 
         <ion-col>
-            <ion-item>
-                <ion-label>{{item.MarkupOut | date: 'HH:mm'}}</ion-label>                
-              </ion-item>
+            {{item.MarkupOut | date: 'HH:mm'}}
         </ion-col>
         
       </ion-row>

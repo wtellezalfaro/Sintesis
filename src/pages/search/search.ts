@@ -56,6 +56,21 @@ export class SearchPage
     
   }
 
+  getColor(tipo:string)
+  {
+    if(tipo=='FaltaInjustificada')
+      return 'red';
+    
+    if(tipo=='Retraso')
+      return 'orange';
+    
+    if(tipo=='SinNovedad')
+      return 'green';
+
+    if(tipo=='Vacacion')
+      return 'cyan';
+  }
+
 
   openItem() {
     

@@ -9,16 +9,16 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'item-detail.html'
 })
 export class ItemDetailPage {
-  item: any;  
-  sols:any[]=[];
+  itemNav: any;  
+  days:any[]=[];
 
   constructor(public navCtrl: NavController, navParams: NavParams, public http:HttpClient) 
   {
-    this.item = navParams.get('item');
+    this.itemNav = navParams.get('item');
 
-    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal='+this.item).subscribe(
+    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal='+this.itemNav).subscribe(
       (data) => { // Success
-        this.sols = data['asistencia'];
+        this.days = data['asistencia'];
         console.log(data['asistencia']);
         /*this.sols.push(...data['solicitudes']);*/
       },
@@ -28,6 +28,21 @@ export class ItemDetailPage {
     );
 
 
+  }
+
+  getColor(tipo:string)
+  {
+    if(tipo=='FaltaInjustificada')
+      return 'red';
+    
+    if(tipo=='Retraso')
+      return 'orange';
+    
+    if(tipo=='SinNovedad')
+      return 'green';
+
+    if(tipo=='Vacacion')
+      return 'cyan';
   }
 
 }
