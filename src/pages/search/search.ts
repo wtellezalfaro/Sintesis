@@ -3,7 +3,8 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 import { HttpClient } from '@angular/common/http';
-
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,10 +15,32 @@ export class SearchPage
 {
   currentItems: Item[];
   days:any[]=[];
+  public UserId: string;
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient) 
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient,
+              public storage:Storage,
+              private platform:Platform )  
   {
-    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal=000066').subscribe(
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='000066';
+    }
+
+    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal='+this.UserId).subscribe(
       (data) => { // Success
         this.days = data['asistencia'];
         console.log(data['asistencia']);

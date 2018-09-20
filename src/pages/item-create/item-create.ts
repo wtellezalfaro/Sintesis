@@ -6,6 +6,8 @@ import { AlertController } from 'ionic-angular';
 import { SolicitudVacacion } from '../../models/solicitudvacacion'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,15 +20,36 @@ export class ItemCreatePage {
   hasta:string="";
   dias:number=0;
   days:any[]=[];
+  public UserId: string;
 
   constructor(public navCtrl: NavController, 
               public viewCtrl: ViewController, 
               formBuilder: FormBuilder, 
               public alertCtrl: AlertController, 
               public http:HttpClient,
-               ) 
+              public storage:Storage,
+              private platform:Platform   )               
   {
-    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal=000066').subscribe(
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='000066';
+    }
+
+    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal='+this.UserId).subscribe(
       (data) => { // Success
         this.days = data['asistencia'];
         console.log(data['asistencia']);
