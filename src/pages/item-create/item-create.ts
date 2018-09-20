@@ -17,15 +17,40 @@ export class ItemCreatePage {
   desde:string="";
   hasta:string="";
   dias:number=0;
+  days:any[]=[];
 
   constructor(public navCtrl: NavController, 
               public viewCtrl: ViewController, 
               formBuilder: FormBuilder, 
               public alertCtrl: AlertController, 
               public http:HttpClient,
-               ) {
+               ) 
+  {
+    http.get('http://sintesismws.ttsoluciones.com/Employee/GetAsistencia?personal=000066').subscribe(
+      (data) => { // Success
+        this.days = data['asistencia'];
+        console.log(data['asistencia']);
+        /*this.sols.push(...data['solicitudes']);*/
+      },
+      (error) =>{
+        console.error(error);
+      }
+    );              
+  }
 
-                
+  getColor(tipo:string)
+  {
+    if(tipo=='FaltaInjustificada')
+      return 'red';
+    
+    if(tipo=='Retraso')
+      return 'orange';
+    
+    if(tipo=='SinNovedad')
+      return 'green';
+
+    if(tipo=='Vacacion')
+      return 'cyan';
   }
  
   /**
@@ -35,10 +60,7 @@ export class ItemCreatePage {
     this.viewCtrl.dismiss();
   }
 
-  /**
-   * The user is done and wants to create the item, so return it
-   * back to the presenter.
-   */
+  
   done() {
     /*if (!this.form.valid) { return; }
     this.viewCtrl.dismiss(this.form.value);*/
@@ -56,7 +78,7 @@ export class ItemCreatePage {
     //let body = JSON.stringify('hola2');
 
   
-    this.solicitud = new SolicitudVacacion('000066',
+    /*this.solicitud = new SolicitudVacacion('000066',
                                         0,
                                         '05/08/2018',
                                         '05/08/2018',
@@ -73,13 +95,15 @@ export class ItemCreatePage {
                                         '',
                                         'Vacacion',
                                           0);
-    //this.solicitud.SolicitudFecha='05/05/2018';                                      
-    
-    let body = JSON.stringify( this.solicitud );           
+                                     
+    */
+    let body = JSON.stringify( this.days );           
                                            
      
-    this.http.post('http://sintesismws.ttsoluciones.com/api/SolicitudVacacion', body, httpOptions).subscribe(data=>console.log(data), (err)=> console.error("Failed! " + err) );
-                                              
+    this.http.post('http://sintesismws.ttsoluciones.com/api/SolicitudVacacion', body, httpOptions).subscribe(data=>this.showSuccesAlert(data), (err)=> console.error("Failed! " + err) );
+         
+        
+    //console.log(body);
      
 
     /*let alert = this.alertCtrl.create({
@@ -88,6 +112,15 @@ export class ItemCreatePage {
       buttons: ['Dismiss']
     });
     alert.present();*/
+  }
+
+  showSuccesAlert(data:any) {
+    const alert = this.alertCtrl.create({
+      title: 'Solicitud Registrada!',
+      subTitle: 'La prospección fue registrada Exitosamente!'+data,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

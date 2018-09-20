@@ -11,7 +11,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+      <button ion-button (click)="done()"  strong>
         <span color="primary" showWhen="ios">
           Aceptar
         </span>
@@ -24,26 +24,43 @@
 
 
 <ion-content>
- 
-  <form>
-  <ion-list>
-    <ion-item>
-      <ion-label>Desde</ion-label>
-      <ion-datetime ></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Hasta</ion-label>
-      <ion-datetime ></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Observaciones</ion-label>
-      <ion-input type="text" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Dias</ion-label>
-      <ion-input type="text" ></ion-input>
-    </ion-item>
-    <button ion-button  block (click)="done()" >Aceptar</button>
-  </ion-list>
-</form>
+
+      <ion-grid>
+          <ion-row >
+              <ion-col>
+              </ion-col>  
+              <ion-col>
+                Fecha
+              </ion-col>     
+              <ion-col>
+                Horario
+              </ion-col>   
+              <ion-col>
+                Entrada
+              </ion-col>   
+              <ion-col>
+                  Salida
+                </ion-col>   
+            </ion-row>
+        <ion-row *ngFor="let item of days" [ngStyle]="{background: getColor(item.EmployeeCalendarType)}">
+          <ion-col>
+              <ion-checkbox [(ngModel)]="item.Selected" ></ion-checkbox>
+          </ion-col>
+          <ion-col >          
+              {{item.CalendarDate|date:'dd/MM/yyyy'}}                     
+              {{item.EmployeeCalendarDescription}}
+          </ion-col>     
+          <ion-col>
+              {{item.ScheduleName}}-{{item.ScheduleMarkupName}}
+          </ion-col>      
+          <ion-col>
+              {{item.MarkupIn | date: 'HH:mm'}}
+          </ion-col> 
+          <ion-col>
+              {{item.MarkupOut | date: 'HH:mm'}}
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+
 </ion-content>
