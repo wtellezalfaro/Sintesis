@@ -35,13 +35,13 @@ export class SolicitudvacacionesPage {
           }
           else
           {
-            this.UserId='0';
+            this.UserId='0'; 
           }
         })
     }
     else
     {
-      this.UserId='1';
+      this.UserId='000066';
     }
     
     http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion/'+this.UserId).subscribe(
@@ -86,6 +86,11 @@ export class SolicitudvacacionesPage {
 
   openItem() {
     
+  }
+
+  Login()
+  {
+    console.log(this.sols);
   }
   /**
    * Navigate to the detail page for this item.

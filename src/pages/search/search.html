@@ -14,39 +14,42 @@
   
   <ion-content>
 
-
-     
-
     <ion-grid>
         <ion-row >
             <ion-col >
               Fecha
             </ion-col>     
             <ion-col>
-              Turno
+              Horario
             </ion-col>   
             <ion-col>
               Entrada
             </ion-col>   
-            
+            <ion-col>
+                Salida
+              </ion-col>   
           </ion-row>
       <ion-row *ngFor="let item of days">
         <ion-col style="background:azure">          
             {{item.CalendarDate|date:'dd/MM/yyyy'}}                     
-            {{item.CalendarDateDescription}}
+            {{item.EmployeeCalendarDescription}}
         </ion-col>     
         <ion-col>
             <ion-item>
-                <ion-label>Mañana</ion-label>
-                <ion-checkbox  checked="false"></ion-checkbox>
+                <ion-label>{{item.ScheduleName}}-{{item.ScheduleMarkupName}}</ion-label>
+               
               </ion-item>
         </ion-col>      
         <ion-col>
             <ion-item>
-                <ion-label>Tarde</ion-label>
-                <ion-checkbox  checked="false"></ion-checkbox>
+                <ion-label>{{item.MarkupIn | date: 'HH:mm'}}</ion-label>                
               </ion-item>
         </ion-col> 
+        <ion-col>
+            <ion-item>
+                <ion-label>{{item.MarkupOut | date: 'HH:mm'}}</ion-label>                
+              </ion-item>
+        </ion-col>
         
       </ion-row>
     </ion-grid>
