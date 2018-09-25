@@ -25,8 +25,8 @@ export class SolicitudvacacionesPage {
               public storage:Storage,
               private platform:Platform   ) 
   {
-    if(this.platform.is('cordova'))
-    {
+    //if(this.platform.is('cordova'))
+    //{
       this.storage.get('userId').then(val=>
         {
           if(val)
@@ -38,11 +38,11 @@ export class SolicitudvacacionesPage {
             this.UserId='0'; 
           }
         })
-    }
+    /*}
     else
     {
       this.UserId='000066';
-    }
+    }*/
     
     http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion/'+this.UserId).subscribe(
       (data) => { // Success

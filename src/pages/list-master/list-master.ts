@@ -5,7 +5,8 @@ import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
 import { HttpClient } from '@angular/common/http';
-
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 
 import { AprobacionesvacacionpendientesPage } from '../../pages/aprobacionesvacacionpendientes/aprobacionesvacacionpendientes';
 import { AsistenciadependientesPage } from '../../pages/asistenciadependientes/asistenciadependientes';
@@ -19,9 +20,31 @@ export class ListMasterPage
 {
   currentItems: Item[];
   sols:any[]=[];
+  public UserId: string;
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public http:HttpClient) 
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, 
+              public http:HttpClient,
+              public storage:Storage,
+              private platform:Platform) 
   {
+    if(this.platform.is('cordova'))
+    {
+      this.storage.get('userId').then(val=>
+        {
+          if(val)
+          {
+            this.UserId=val;
+          }
+          else
+          {
+            this.UserId='0';
+          }
+        })
+    }
+    else
+    {
+      this.UserId='000066';
+    }
     /*http.get('http://sintesismws.ttsoluciones.com/api/solicitudvacacion?personalid=000066').subscribe(
       (data) => { // Success
         this.sols = data['solicitudes'];
